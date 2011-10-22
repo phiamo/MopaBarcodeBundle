@@ -1,0 +1,25 @@
+{% extends 'MopaDealPartnerBundle::layout.html.twig' %}
+{% from 'MopaBootstrapBundle::flash.html.twig' import flash %}
+
+{% block content %}
+	 <div class="span10">
+	     <form novalidate="novalidate" action="{{ path('_partner_barcode_playground') }}" class="bootstrap_formflow" method="post" enctype="multipart/form-data">
+   
+        {% if errors|length > 0%}
+            {% for error in errors %}
+            {{ flash('error', error) }}
+            {% endfor %}
+        {% endif%}
+        {{ form_widget(form) }}
+        <input class="btn primary" type="submit" value="preview">
+        {% if barcode %}
+        <img src="{{ barcode }}" alt="generated barcode">
+        {% endif %}
+        </form>
+    </div>
+	<div class="span6" id="new_flow_help">
+        <h3>Tipp</h3>
+        <p>Tragen Sie einen Beispiel Text ein und wählen Sie einen Code Typen aus</p>
+        <p>Beachten Sie das bestimtme Code Typen nur Zahlen annehmen oder bestimmte längen haben müssen.</p>
+    </div>
+{% endblock %}

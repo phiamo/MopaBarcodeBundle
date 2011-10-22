@@ -1,0 +1,3 @@
+mopa_barcode_playground:
+    resource: "@MopaBarcodeBundle/Controller/BarcodeController.php"
+    type:     annotation
