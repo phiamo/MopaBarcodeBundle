@@ -13,13 +13,16 @@ class BarcodeService{
     private $imagine;
     private $types;
     private $logger;
+    private $kernelrootdir;
     
-    public function __construct(ImagineInterface $imagine, Logger $logger){
+    public function __construct(ImagineInterface $imagine, $kernelrootdir,  Logger $logger){
         $this->imagine = $imagine;
         $this->types = BarcodeTypes::getTypes();
         $this->logger = $logger;
+        $this->kernelrootdir = $kernelrootdir;
     }
     public function saveAs($type, $text, $file){
+        @unlink($file);
         switch ($type){
             case is_numeric($type):
                 $barcodeOptions = array('text' => $text);

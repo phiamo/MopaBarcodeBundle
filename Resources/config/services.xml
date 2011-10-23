@@ -12,6 +12,7 @@
     <services>
         <service id="mopa_barcode.barcode_service" class="%mopa_barcode.barcode_service.class%">
             <argument type="service" id="imagine" />
+            <argument>%kernel.root_dir%</argument>
             <argument type="service" id="logger" />
             <tag name="monolog.logger" channel="mopa_barcode" />
         </service>

@@ -3,7 +3,7 @@
 
 {% block content %}
 	 <div class="span10">
-	     <form novalidate="novalidate" action="{{ path('_partner_barcode_playground') }}" class="bootstrap_formflow" method="post" enctype="multipart/form-data">
+	     <form novalidate="novalidate" action="{{ path('_barcode_playground') }}" class="bootstrap_formflow" method="post" enctype="multipart/form-data">
    
         {% if errors|length > 0%}
             {% for error in errors %}

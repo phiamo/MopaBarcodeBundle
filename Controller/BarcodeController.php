@@ -11,7 +11,7 @@ use Mopa\BarcodeBundle\Model\BarcodeTypes;
 class BarcodeController extends Controller
 {
     /**
-     * @Route("/barcode/playground", name="_partner_barcode_playground")
+     * @Route("/barcode/playground", name="_barcode_playground")
      * @Template()
      */
     public function playgroundAction(Request $request)
@@ -33,7 +33,7 @@ class BarcodeController extends Controller
             $text = $data['text'];
             $type = $data['type'];
             if($type){
-                $webfile = "/images/barcode_playground/".session_id()."-barcode_test.png";
+                $webfile = "/images/barcode_playground/".md5(session_id())."-barcode_test.png";
                 $savename =  __DIR__.'/../../../../web'.$webfile;
                 try{
                     $bmanager = $this->get('mopa_barcode.barcode_service');
