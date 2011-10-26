@@ -5,10 +5,11 @@
  * Config file, feel free to modify
  * since we include it from our barcode service we can easyly use its injected kerneldir
  */
-$cachedir = $this->kernelrootdir.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'phpqr'.DIRECTORY_SEPARATOR;
-$logdir = $this->kernelrootdir.DIRECTORY_SEPARATOR.'logs'.DIRECTORY_SEPARATOR.'phpqr'.DIRECTORY_SEPARATOR;
-@mkdir(cachedir);
-@mkdir($logdir);
+    $cachedir = $this->kernelcachedir.DIRECTORY_SEPARATOR.'phpqr'.DIRECTORY_SEPARATOR;
+    $logdir = $this->kernelrootdir.DIRECTORY_SEPARATOR.'logs'.DIRECTORY_SEPARATOR.'phpqr'.DIRECTORY_SEPARATOR;
+    @mkdir($cachedir);
+    @mkdir($logdir);
+
     define('QR_CACHEABLE', true);                                                               // use cache - more disk reads but less CPU power, masks and format templates are stored there
     define('QR_CACHE_DIR', $cachedir);  // used when QR_CACHEABLE === true
     define('QR_LOG_DIR', $logdir);                                // default error logs dir   

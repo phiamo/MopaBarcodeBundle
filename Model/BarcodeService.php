@@ -13,12 +13,14 @@ class BarcodeService{
     private $imagine;
     private $types;
     private $logger;
+    private $kernelcachedir;
     private $kernelrootdir;
     
-    public function __construct(ImagineInterface $imagine, $kernelrootdir,  Logger $logger){
+    public function __construct(ImagineInterface $imagine, $kernelcachedir, $kernelrootdir,  Logger $logger){
         $this->imagine = $imagine;
         $this->types = BarcodeTypes::getTypes();
         $this->logger = $logger;
+        $this->kernelcachedir = $kernelcachedir;
         $this->kernelrootdir = $kernelrootdir;
     }
     public function saveAs($type, $text, $file){
