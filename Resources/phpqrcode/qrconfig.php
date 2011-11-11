@@ -7,8 +7,9 @@
  */
     $cachedir = $this->kernelcachedir.DIRECTORY_SEPARATOR.'phpqr'.DIRECTORY_SEPARATOR;
     $logdir = $this->kernelrootdir.DIRECTORY_SEPARATOR.'logs'.DIRECTORY_SEPARATOR.'phpqr'.DIRECTORY_SEPARATOR;
-    @mkdir($cachedir);
-    @mkdir($logdir);
+    
+    @mkdir($cachedir, 0777, true);
+    @mkdir($logdir, 0777, true);
 
     define('QR_CACHEABLE', true);                                                               // use cache - more disk reads but less CPU power, masks and format templates are stored there
     define('QR_CACHE_DIR', $cachedir);  // used when QR_CACHEABLE === true

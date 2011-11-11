@@ -7,16 +7,22 @@
     
     <parameters>
         <parameter key="mopa_barcode.barcode_service.class">Mopa\BarcodeBundle\Model\BarcodeService</parameter>
+        <parameter key="mopa_barcode.render.twig.extension.class">Mopa\BarcodeBundle\Twig\Extension\BarcodeRenderExtension</parameter>
     </parameters>
-
     <services>
         <service id="mopa_barcode.barcode_service" class="%mopa_barcode.barcode_service.class%">
             <argument type="service" id="imagine" />
             <argument>%kernel.cache_dir%</argument>
             <argument>%kernel.root_dir%</argument>
+            <argument>media/cache/barcodes/</argument>
             <argument type="service" id="logger" />
             <tag name="monolog.logger" channel="mopa_barcode" />
         </service>
+        
+        <service id="mopa_barcode.render.twig.extension" class="%mopa_barcode.render.twig.extension.class%">
+            <tag name="twig.extension" />
+            <argument type="service" id="mopa_barcode.barcode_service" />
+        </service>
+
     </services>
-    
 </container>

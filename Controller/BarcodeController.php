@@ -2,23 +2,22 @@
 
 namespace Mopa\BarcodeBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+
 use Mopa\BarcodeBundle\Model\BarcodeTypes;
 
-class BarcodeController extends Controller
+class BarcodeController extends ContainerAware
 {
     /**
-     * @Route("/barcode/playground", name="_barcode_playground")
-     * @Template()
+     * This is just an example howto use barcodes and to display them
      */
     public function playgroundAction(Request $request)
     {
         $types = BarcodeTypes::getTypes();
         $errors = array();
-        $form = $this->createFormBuilder()
+        $form = $this->container->get('form.factory')->createBuilder('form')
             ->add('text')
             ->add('type', 'choice', array(
                 'empty_value' => 'Choose an option',
@@ -33,11 +32,9 @@ class BarcodeController extends Controller
             $text = $data['text'];
             $type = $data['type'];
             if($type){
-                $webfile = "/images/barcode_playground/".md5(session_id())."-barcode_test.png";
-                $savename =  __DIR__.'/../../../../web'.$webfile;
                 try{
-                    $bmanager = $this->get('mopa_barcode.barcode_service');
-                    $bmanager->saveAs($type, $text, $savename);
+                    $bmanager = $this->container->get('mopa_barcode.barcode_service');
+                    $webfile = $bmanager->get($type, $text);
                 }
                 catch(\Exception $e){
                     $errors[] = $e->getMessage();
@@ -46,15 +43,31 @@ class BarcodeController extends Controller
                 $errors[] = "Please select a option";
             }
             if(count($errors)){
-                
                 $webfile = false;
             }
         }
-        return array(
-            'form'=>$form->createView(),
-            'barcode'=>$webfile, 
-            'errors'=>$errors,
+        return $this->container->get('templating')->renderResponse(
+            'MopaBarcodeBundle:Barcode:playground.html.twig',
+            array(
+                'form'=>$form->createView(),
+                'barcode_url'=>$webfile, 
+                'errors'=>$errors,
+            )
         );
     }
-    
+    /**
+     * This might be used to render barcodes dynamically
+     * Careful to expose this on the web, maybe others could use your site just to generate and display barcodes 
+     */
+    public function displayBarcodeAction($type, $enctext){
+        $bservice = $this->container->get('mopa_barcode.barcode_service');
+        return new Response(
+            file_get_contents($file = $bservice->get($type, $enctext, true)),
+            200,
+            array(
+                'Content-Type'          => 'image/png',
+                'Content-Disposition'   => 'filename="'.$file.'"'
+            )
+        );
+    }
 }
