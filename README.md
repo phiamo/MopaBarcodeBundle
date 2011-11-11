@@ -23,7 +23,7 @@ Is just a shot and shouldnt be considered to be perfect. Feel free to fork and P
 1.2 Or add this bundle to your project as a Git submodule:
 
 ``` bash
-git submodule add git@github.com:phiamo/MopaBarcodepBundle.git vendor/bundles/Mopa/BarcodeBundle
+git submodule add git@github.com:phiamo/MopaBarcodeBundle.git vendor/bundles/Mopa/BarcodeBundle
 ```
 
 2. Add namespace to you app/autoload.php
