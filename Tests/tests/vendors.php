@@ -10,7 +10,7 @@ if (!is_dir($vendorDir)) {
 
 $deps = array(
     array('symfony', 'git://github.com/symfony/symfony.git', isset($_SERVER['SYMFONY_VERSION']) ? $_SERVER['SYMFONY_VERSION'] : 'origin/master'),
-    array('bundles/BootstrapBundle', 'git://github.com/phiamo/MopaBootstrapBundle.git', 'origin/master')
+    array('bundles/BootstrapBundle', 'git://github.com/phiamo/MopaBarcodeBundle.git', 'origin/master')
 );
 
 foreach ($deps as $dep) {
