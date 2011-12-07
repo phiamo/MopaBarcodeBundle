@@ -37,11 +37,11 @@ class BarcodeRenderExtension extends \Twig_Extension {
     }
 
     public function url($type, $text) {
-        $this->get($type, $text, false);
+        return $this->get($type, $text, false);
     }
 
 	public function path($type, $text) {
-        $this->get($type, $text, true);
+        return $this->get($type, $text, true);
     }
 	
 	protected function get($type, $text, $absolute) {
