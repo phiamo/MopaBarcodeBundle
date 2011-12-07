@@ -62,7 +62,7 @@ class BarcodeService{
             $this->saveAs($type, $text, $filename);
         }
         if(!$absolut){
-            return "/".$this->webdir.$this->getTypeDir($type).$this->getBarcodeFilename($text);
+            return $this->webdir.$this->getTypeDir($type).$this->getBarcodeFilename($text);
         }
         return $filename;
     }

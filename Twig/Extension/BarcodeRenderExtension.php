@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Twig extension for barcodes 
  *
@@ -11,9 +12,11 @@ namespace Mopa\BarcodeBundle\Twig\Extension;
 
 use Mopa\BarcodeBundle\Model\BarcodeService;
 
-class BarcodeRenderExtension extends \Twig_Extension {
-    
+class BarcodeRenderExtension extends \Twig_Extension
+{
+
     protected $bs;
+
     /**
      * @param \Knp\Menu\Twig\Helper $helper
      */
@@ -21,20 +24,36 @@ class BarcodeRenderExtension extends \Twig_Extension {
     {
         $this->bs = $bs;
     }
+
     /**
      * {@inheritDoc}
      */
-    public function getName() {
+    public function getName()
+    {
         return 'mopa_barcode_render';
     }
-    
+
     public function getFunctions()
     {
         return array(
-            'mopa_barcode_url' => new \Twig_Function_Method($this, 'get'),
+            'mopa_barcode_url' => new \Twig_Function_Method($this, 'url'),
+            'mopa_barcode_path' => new \Twig_Function_Method($this, 'path'),
         );
     }
-    public function get($type, $text){
-        return $this->bs->get($type, urlencode($text));
+
+    public function url($type, $text)
+    {
+        return $this->get($type, $text, false);
     }
+
+    public function path($type, $text)
+    {
+        return $this->get($type, $text, true);
+    }
+
+    protected function get($type, $text, $absolute)
+    {
+        return $this->bs->get($type, urlencode($text), $absolute);
+    }
+
 }
