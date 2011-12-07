@@ -1,7 +1,5 @@
 # README
 
-<<<<<<< HEAD
-
 ## Introduction
 
 MopaBarcodeBundle integrates Zend_Barcode and PHP QR Lib to be easily used in symfony2 via twig.
@@ -19,7 +17,7 @@ Is just a shot and shouldnt be considered to be perfect. Feel free to fork and P
 [MopaBarcodeBundle]
     git=http://github.com/phiamo/MopaBarcodeBundle.git
     target=/bundles/Mopa/BarcodeBundle
-
+```
 
 1.2 Or add this bundle to your project as a Git submodule:
 
@@ -32,7 +30,6 @@ git submodule add git@github.com:phiamo/MopaBarcodeBundle.git vendor/bundles/Mop
 ``` php
 <?php
 // app/autoload.php
->>>>>>> 43128a254e7448298948305b4f149ed32f5b3307
 $loader->registerNamespaces(array(
     // ...
     'Mopa'        => __DIR__.'/../vendor/bundles',
