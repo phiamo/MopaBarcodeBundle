@@ -31,10 +31,20 @@ class BarcodeRenderExtension extends \Twig_Extension {
     public function getFunctions()
     {
         return array(
-            'mopa_barcode_url' => new \Twig_Function_Method($this, 'get'),
+            'mopa_barcode_url' => new \Twig_Function_Method($this, 'url'),
+		    'mopa_barcode_path' => new \Twig_Function_Method($this, 'path'),
         );
     }
-    public function get($type, $text){
-        return $this->bs->get($type, urlencode($text));
+
+    public function url($type, $text) {
+        $this->get($type, $text, false);
     }
+
+	public function path($type, $text) {
+        $this->get($type, $text, true);
+    }
+	
+	protected function get($type, $text, $absolute) {
+		return $this->bs->get($type, urlencode($text), $absolute);
+	}
 }
