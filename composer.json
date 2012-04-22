@@ -1,0 +1,29 @@
+{
+    "name": "mopa/barcode-bundle",
+    "type": "symfony-bundle",
+    "description": "Integrates Zend_Barcode and PHP QR Lib to be easily used in symfony2 via twig",
+    "keywords": ["barcode", "qr code", "zend", "twig"],
+    "version": "master",
+    "authors": [
+        {
+            "name": "Philipp A. Mohrenweiser",
+            "email": "phiamo@googlemail.com"
+        },
+        {
+            "name": "Community contributions",
+            "homepage": "https://github.com/phiamo/MopaBootstrapBundle/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Mopa\\Bundle\\CommonBundle": ""
+        }
+    },
+    "target-dir": "Mopa/Bundle/BarcodeBundle",
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "suggest":  {
+        "brikou/zend_barcode": "dev-master"
+    }
+}
