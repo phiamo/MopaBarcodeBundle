@@ -19,8 +19,7 @@ Is just a shot and shouldnt be considered to be perfect. Feel free to fork and P
         "imagine/Imagine": "dev-master",
         "avalanche123/imagine-bundle": "dev-master",
         // if you want to use the zend barcodes
-        "brikou/zend_loader": "dev-master",
-        "brikou/zend_barcode": "dev-master",
+        "zf2/zf2": "dev-master",
         // optionally for playground
         "mopa/bootstrap-sandbox-bundle": "dev-master"
         // also read the readme:
