@@ -16,7 +16,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "Mopa\\Bundle\\CommonBundle": ""
+            "Mopa\\Bundle\\BarcodeBundle": ""
         }
     },
     "target-dir": "Mopa/Bundle/BarcodeBundle",
