@@ -53,6 +53,14 @@ my_barcode_playground:
     prefix:   /
 ```
 
+Add this to your config.yml:
+
+``` yaml
+imports:
+    - { resource: @MopaBootstrapSandboxBundle/Resources/config/examples/example_menu.yml }
+    - { resource: @MopaBootstrapSandboxBundle/Resources/config/examples/example_navbar.yml }
+```
+
 And try http://{yoursymfonyapp}/barcode/playground
 
 ## Usage
@@ -66,7 +74,7 @@ If you installed it have a look into
 https://github.com/phiamo/MopaBarcodeBundle/blob/master/Model/BarcodeTypes.php
 The Type given to the service is either the int or the string defined in the types arrays keys and values
 
-To get the service use in your controllers etc you can use 
+To get the service in your controllers etc you can use 
 
 $bmanager = $this->container->get('mopa_barcode.barcode_service');
 
@@ -108,8 +116,7 @@ http://{yoursymfonyapp}/barcode/send/{type}/{enctext}
 ## TODO
 
     - Load the different Barcode Libs in a different way. should't be done by ints :(
- 
- 
+
 ## Known Issues
 
     - Nothing what could not be done in another way, probably some will arise as soon as its published
