@@ -1,11 +1,8 @@
 <?php
 namespace Mopa\Bundle\BarcodeBundle\Model;
 
-
 use Monolog\Logger;
-
 use Imagine\Gd\Image;
-
 use Imagine\Image\ImagineInterface;
 use Zend\Barcode\Barcode;
 
@@ -16,7 +13,7 @@ class BarcodeService{
     private $kernelrootdir;
     private $webdir;
     private $logger;
-    
+
     public function __construct(ImagineInterface $imagine, $kernelcachedir, $kernelrootdir, $webdir,  Logger $logger){
         $this->types = BarcodeTypes::getTypes();
         $this->imagine = $imagine;
@@ -49,7 +46,7 @@ class BarcodeService{
     /**
      * Get a Barcodes Filename
      * Generates it if its not here
-     * 
+     *
      * @param string $type BarcodeType
      * @param string $text BarcodeText
      * @param boolean $absolute get absolute path, default: false
@@ -62,7 +59,7 @@ class BarcodeService{
             $this->saveAs($type, $text, $filename);
         }
         if(!$absolut){
-            return $this->webdir.$this->getTypeDir($type).$this->getBarcodeFilename($text);
+            return "/".$this->webdir.$this->getTypeDir($type).$this->getBarcodeFilename($text);
         }
         return $filename;
     }

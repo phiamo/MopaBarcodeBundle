@@ -3,23 +3,26 @@
 
 {% block headline %}Mopa Barcode Bundle{% endblock %}
 {% block content %}
-	 <div class="span10">
+	 <div class="span5">
 	     <form novalidate="novalidate" action="{{ path('mopa_barcode_playground') }}" class="bootstrap_formflow" method="post" enctype="multipart/form-data">
-        {% if errors|length > 0%}
-            {% for error in errors %}
-            {{ flash('error', error) }}
-            {% endfor %}
-        {% endif%}
-        {{ form_widget(form) }}
-        <div class="actions">
-        <input class="btn primary" type="submit" value="preview">
-        </div>
-        <div style="text-align: center;">
-        {% if barcode_url %}
-            <img src="{{ mopa_barcode_url }}" alt="generated barcode">
-        {% endif %}
-        </div>
+            {% if errors|length > 0%}
+                {% for error in errors %}
+                {{ flash('error', error) }}
+                {% endfor %}
+            {% endif%}
+            {{ form_widget(form) }}
+            <div class="actions">
+                <input class="btn primary" type="submit" value="preview">
+            </div>
         </form>
+    </div>
+     <div class="span3">
+        {% if barcode_url %}
+        <div style="text-align: center;">
+            <p>Result:</p>
+            <p><img src="{{ barcode_url }}" alt="generated barcode"></p>
+        </div>
+        {% endif %}
     </div>
 	<div class="span4" id="new_flow_help">
         <h3>Tipp</h3>
@@ -29,3 +32,7 @@
         <p><img alt="[barcode]" src="{{ mopa_barcode_url('code128', '123456789') }}"></p>
     </div>
 {% endblock %}
+
+{% block fork_me %}
+<a href="http://github.com/phiamo/MopaBarcodeBundle"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 99999;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+{% endblock fork_me %}
