@@ -1,11 +1,10 @@
-{% extends 'MopaBootstrapBundle::layout.html.twig' %}
+{% extends 'MopaBootstrapSandboxBundle::layout.html.twig' %}
 {% from 'MopaBootstrapBundle::flash.html.twig' import flash %}
 
 {% block headline %}Mopa Barcode Bundle{% endblock %}
 {% block content %}
 	 <div class="span10">
 	     <form novalidate="novalidate" action="{{ path('mopa_barcode_playground') }}" class="bootstrap_formflow" method="post" enctype="multipart/form-data">
-   
         {% if errors|length > 0%}
             {% for error in errors %}
             {{ flash('error', error) }}

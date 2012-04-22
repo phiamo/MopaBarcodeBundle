@@ -24,6 +24,7 @@
         "php": ">=5.3.2"
     },
     "suggest":  {
+        "brikou/zend_loader": "dev-master",
         "brikou/zend_barcode": "dev-master",
         "imagine/Imagine": "dev-master",
         "avalanche123/imagine-bundle": "dev-master",
