@@ -8,9 +8,9 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-namespace Mopa\BarcodeBundle\Twig\Extension;
+namespace Mopa\Bundle\BarcodeBundle\Twig\Extension;
 
-use Mopa\BarcodeBundle\Model\BarcodeService;
+use Mopa\Bundle\BarcodeBundle\Model\BarcodeService;
 
 class BarcodeRenderExtension extends \Twig_Extension
 {

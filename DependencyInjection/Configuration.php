@@ -1,6 +1,6 @@
 <?php
 
-namespace Mopa\BarcodeBundle\DependencyInjection;
+namespace Mopa\Bundle\BarcodeBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

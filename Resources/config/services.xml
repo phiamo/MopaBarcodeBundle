@@ -6,8 +6,8 @@
 
     
     <parameters>
-        <parameter key="mopa_barcode.barcode_service.class">Mopa\BarcodeBundle\Model\BarcodeService</parameter>
-        <parameter key="mopa_barcode.render.twig.extension.class">Mopa\BarcodeBundle\Twig\Extension\BarcodeRenderExtension</parameter>
+        <parameter key="mopa_barcode.barcode_service.class">Mopa\Bundle\BarcodeBundle\Model\BarcodeService</parameter>
+        <parameter key="mopa_barcode.render.twig.extension.class">Mopa\Bundle\BarcodeBundle\Twig\Extension\BarcodeRenderExtension</parameter>
     </parameters>
     <services>
         <service id="mopa_barcode.barcode_service" class="%mopa_barcode.barcode_service.class%">

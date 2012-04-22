@@ -1,12 +1,12 @@
 <?php
 
-namespace Mopa\BarcodeBundle\Controller;
+namespace Mopa\Bundle\BarcodeBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use Mopa\BarcodeBundle\Model\BarcodeTypes;
+use Mopa\Bundle\BarcodeBundle\Model\BarcodeTypes;
 
 class BarcodeController extends ContainerAware
 {

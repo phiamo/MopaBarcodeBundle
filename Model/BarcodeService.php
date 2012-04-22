@@ -1,5 +1,5 @@
 <?php
-namespace Mopa\BarcodeBundle\Model;
+namespace Mopa\Bundle\BarcodeBundle\Model;
 
 
 use Monolog\Logger;

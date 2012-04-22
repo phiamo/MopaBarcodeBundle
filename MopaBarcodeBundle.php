@@ -1,6 +1,6 @@
 <?php
 
-namespace Mopa\BarcodeBundle;
+namespace Mopa\Bundle\BarcodeBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

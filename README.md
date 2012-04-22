@@ -44,7 +44,7 @@ public function registerBundles()
 {
     return array(
         // ...
-        new Mopa\BarcodeBundle\MopaBarcodeBundle(),
+        new Mopa\Bundle\BarcodeBundle\MopaBarcodeBundle(),
         // ...
     );
 }
