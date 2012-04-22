@@ -17,7 +17,7 @@
         </div>
         <div style="text-align: center;">
         {% if barcode_url %}
-            <img src="{{ barcode_url }}" alt="generated barcode">
+            <img src="{{ mopa_barcode_url }}" alt="generated barcode">
         {% endif %}
         </div>
         </form>
@@ -27,6 +27,6 @@
         <p>Tragen Sie einen Beispiel Text ein und wählen Sie einen Code Typen aus</p>
         <p>Beachten Sie das bestimtme Code Typen nur Zahlen annehmen oder bestimmte längen haben müssen.</p>
         <p>Bsp: Code128 <br>Text:123456789</p>
-        <p><img alt="[barcode]" src="{{ mopa_barcode('code128', '123456789') }}"></p>
+        <p><img alt="[barcode]" src="{{ mopa_barcode_url('code128', '123456789') }}"></p>
     </div>
 {% endblock %}

@@ -10,33 +10,23 @@ Is just a shot and shouldnt be considered to be perfect. Feel free to fork and P
 
 ## Installation
 
-1.1 Add this bundle to your project as via deps:
-
-
+1. Add this bundle to your composer.json:
 ```
-[MopaBarcodeBundle]
-    git=http://github.com/phiamo/MopaBarcodeBundle.git
-    target=/bundles/Mopa/BarcodeBundle
-```
-
-1.2 Or add this bundle to your project as a Git submodule:
-
-``` bash
-git submodule add git@github.com:phiamo/MopaBarcodeBundle.git vendor/bundles/Mopa/BarcodeBundle
-```
-
-2. Add namespace to you app/autoload.php
-
-``` php
-<?php
-// app/autoload.php
-$loader->registerNamespaces(array(
-    // ...
-    'Mopa'        => __DIR__.'/../vendor/bundles',
-));
+{
+    "require": {
+        // ...
+        "mopa/barcode-bundle": "dev-master",
+        "imagine/Imagine": "dev-master",
+        "avalanche123/imagine-bundle": "dev-master",
+        // if you want to use the zend barcodes
+        "brikou/zend_barcode": "dev-master",
+        // optionally for playground
+        "mopa/bootstrap-sandbox-bundle": "dev-master"
+    }
+}
 ```
 
-3. Add this bundle to your app/AppKernel.php:
+2. Add this bundle to your app/AppKernel.php:
 
 ``` php
 // application/ApplicationKernel.php
@@ -49,24 +39,6 @@ public function registerBundles()
     );
 }
 ```
-
-## Optionally install Zend Framework 2 (maybe you can only use the Barcode and Validator Subtrees, never tried)
-I did include phpqrcode form  http://sourceforge.net/projects/phpqrcode/ due to changes in its config
-
-either via deps:
-
-```
-[Zend]
-    git=http://github.com/zendframework/zf2.git
-
-```
-
-or as git submodule
-
-``` bash
-git submodule add git://github.com/zendframework/zf2.git vendor/Zend
-```
-
 
 ## Demo
 
