@@ -26,7 +26,7 @@ class BarcodeService{
         @unlink($file);
         switch ($type){
             case $type == 'qr':
-                include __DIR__."/../Resources/phpqrcode/qrlib.php";
+                include __DIR__.DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."Resources".DIRECTORY_SEPARATOR."phpqrcode".DIRECTORY_SEPARATOR."qrlib.php";
                 \QRcode::png($text, $file);
             break;
             case is_numeric($type):
@@ -59,7 +59,8 @@ class BarcodeService{
             $this->saveAs($type, $text, $filename);
         }
         if(!$absolut){
-            return "/".$this->webdir.$this->getTypeDir($type).$this->getBarcodeFilename($text);
+            $path = DIRECTORY_SEPARATOR.$this->webdir.$this->getTypeDir($type).$this->getBarcodeFilename($text);
+            return str_replace(DIRECTORY_SEPARATOR, "/", $path);
         }
         return $filename;
     }
@@ -80,6 +81,6 @@ class BarcodeService{
         return $path;
     }
     protected function getAbsolutePath(){
-        return $this->kernelrootdir."/../web/".$this->webdir;
+        return $this->kernelrootdir.DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR.$this->webdir;
     }
 }
