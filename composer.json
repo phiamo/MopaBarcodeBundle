@@ -24,7 +24,7 @@
         "php": ">=5.3.2"
     },
     "suggest":  {
-        "zf2/zf2": "dev-master",
+        "zendframework/zendframework": "dev-master",
         "imagine/Imagine": "dev-master",
         "avalanche123/imagine-bundle": "dev-master",
         "mopa/bootstrap-sandbox-bundle": "dev-master"
