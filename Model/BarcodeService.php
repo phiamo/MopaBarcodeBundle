@@ -28,7 +28,7 @@ class BarcodeService{
         @unlink($file);
         switch ($type){
             case $type == 'qr':
-                include __DIR__.DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."Resources".DIRECTORY_SEPARATOR."phpqrcode".DIRECTORY_SEPARATOR."qrlib.php";
+                include_once __DIR__.DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."Resources".DIRECTORY_SEPARATOR."phpqrcode".DIRECTORY_SEPARATOR."qrlib.php";
                 \QRcode::png($text, $file);
             break;
             case is_numeric($type):
