@@ -12,14 +12,16 @@ class BarcodeService{
     private $kernelcachedir;
     private $kernelrootdir;
     private $webdir;
+    private $webroot;
     private $logger;
 
-    public function __construct(ImagineInterface $imagine, $kernelcachedir, $kernelrootdir, $webdir,  Logger $logger){
+    public function __construct(ImagineInterface $imagine, $kernelcachedir, $kernelrootdir, $webdir, $webroot, Logger $logger){
         $this->types = BarcodeTypes::getTypes();
         $this->imagine = $imagine;
         $this->kernelcachedir = $kernelcachedir;
         $this->kernelrootdir = $kernelrootdir;
         $this->webdir = $webdir;
+        $this->webroot = $webroot;    
         $this->logger = $logger;
     }
     public function saveAs($type, $text, $file){
@@ -81,6 +83,6 @@ class BarcodeService{
         return $path;
     }
     protected function getAbsolutePath(){
-        return $this->kernelrootdir.DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR.$this->webdir;
+        return $this->webroot.DIRECTORY_SEPARATOR.$this->webdir;
     }
 }
