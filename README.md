@@ -36,6 +36,7 @@ public function registerBundles()
 {
     return array(
         // ...
+        new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
         new Mopa\Bundle\BarcodeBundle\MopaBarcodeBundle(),
     );
 }
