@@ -1,3 +1,5 @@
 mopa_barcode_display:
     pattern:   /barcode/send/{type}/{enctext}
     defaults:  { _controller: MopaBarcodeBundle:Barcode:displayBarcode }
+    requirements:
+        enctext: ".+"
