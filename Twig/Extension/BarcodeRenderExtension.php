@@ -41,19 +41,19 @@ class BarcodeRenderExtension extends \Twig_Extension
         );
     }
 
-    public function url($type, $text)
+    public function url($type, $text, $options)
     {
-        return $this->get($type, $text, false);
+        return $this->get($type, $text, false, $options);
     }
 
-    public function path($type, $text)
+    public function path($type, $text, $options)
     {
-        return $this->get($type, $text, true);
+        return $this->get($type, $text, true, $options);
     }
 
-    protected function get($type, $text, $absolute)
+    protected function get($type, $text, $absolute, $options)
     {
-        return $this->bs->get($type, urlencode($text), $absolute);
+        return $this->bs->get($type, urlencode($text), $absolute, $options);
     }
 
 }

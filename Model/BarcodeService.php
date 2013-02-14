@@ -61,12 +61,12 @@ class BarcodeService{
      */
     public function get($type, $enctext, $absolut = false, $options = array()){
         $text = urldecode($enctext);
-        $filename = $this->getAbsoluteBarcodeDir($type).$this->getBarcodeFilename($text);
+        $filename = $this->getAbsoluteBarcodeDir($type).$this->getBarcodeFilename($text, $options);
         if(!file_exists($filename)){
             $this->saveAs($type, $text, $filename, $options);
         }
         if(!$absolut){
-            $path = DIRECTORY_SEPARATOR.$this->webdir.$this->getTypeDir($type).$this->getBarcodeFilename($text);
+            $path = DIRECTORY_SEPARATOR.$this->webdir.$this->getTypeDir($type).$this->getBarcodeFilename($text, $options);
             return str_replace(DIRECTORY_SEPARATOR, "/", $path);
         }
         return $filename;
@@ -77,8 +77,8 @@ class BarcodeService{
         }
         return $type.DIRECTORY_SEPARATOR;
     }
-    protected function getBarcodeFilename($text){
-        return sha1($text).".png";
+    protected function getBarcodeFilename($text, $options){
+        return sha1($text . serialize($options)).".png";
     }
     protected function getAbsoluteBarcodeDir($type){
         $path = $this->getAbsolutePath().$this->getTypeDir($type);
