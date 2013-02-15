@@ -70,4 +70,9 @@ class BarcodeController extends ContainerAware
             )
         );
     }
+
+    public function dowloadBarcodeAction($type, $enctext, $options){
+
+        //TODO: to be implemented
+    }
 }
