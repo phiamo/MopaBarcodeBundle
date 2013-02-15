@@ -14,6 +14,7 @@ class BarcodeService{
     private $kernelrootdir;
     private $webdir;
     private $webroot;
+    private $overlayPath;
     private $logger;
 
     public function __construct(ImagineInterface $imagine, $kernelcachedir, $kernelrootdir, $webdir, $webroot, Logger $logger){
@@ -22,7 +23,7 @@ class BarcodeService{
         $this->kernelcachedir = $kernelcachedir;
         $this->kernelrootdir = $kernelrootdir;
         $this->webdir = $webdir;
-        $this->webroot = $webroot;    
+        $this->webroot = $webroot;
         $this->logger = $logger;
     }
     public function saveAs($type, $text, $file, $options = array()){
@@ -63,7 +64,7 @@ class BarcodeService{
         $originalLevelWidth = $width / $size;
 
         //TODO move base path to config
-        $overlayImagePath = $this->kernelrootdir . '/Resources/AstinaRedirectManagerBundle/public/images/QR-j-' . $originalLevelWidth . '.png';
+        $overlayImagePath = $this->overlayPath . DIRECTORY_SEPARATOR . $originalLevelWidth . '.png';
 
         if (file_exists($overlayImagePath)) {
             $destination = imagecreatefrompng($file);
@@ -71,7 +72,7 @@ class BarcodeService{
 
             $overlayImage = new Image($src);
             $overlayImage->resize(new Box($width, $width));
-            $tmpFilePath = $this->kernelcachedir . '/' . sha1(time() . rand()) . '.png';
+            $tmpFilePath = $this->kernelcachedir . DIRECTORY_SEPARATOR . sha1(time() . rand()) . '.png';
             $overlayImage->save($tmpFilePath);
 
             $src = imagecreatefrompng($tmpFilePath);
@@ -139,5 +140,14 @@ class BarcodeService{
     }
     protected function getAbsolutePath(){
         return $this->webroot.DIRECTORY_SEPARATOR.$this->webdir;
+    }
+
+    public function setOverlayPath($path)
+    {
+        if ($path) {
+            $this->overlayPath = $this->kernelrootdir . DIRECTORY_SEPARATOR .  $path;
+        } else {
+            $this->overlayPath = __DIR__ . '/../Resources/qr_overlays';
+        }
     }
 }
