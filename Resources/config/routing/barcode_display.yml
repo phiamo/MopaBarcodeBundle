@@ -3,3 +3,9 @@ mopa_barcode_display:
     defaults:  { _controller: MopaBarcodeBundle:Barcode:displayBarcode }
     requirements:
         enctext: ".+"
+
+mopa_barcode_download:
+    pattern:   /barcode/download/{type}/{level}/{size}/{margin}/{useOverlay}/{enctext}
+    defaults:  { _controller: MopaBarcodeBundle:Barcode:downloadBarcode }
+    requirements:
+        enctext: ".+"

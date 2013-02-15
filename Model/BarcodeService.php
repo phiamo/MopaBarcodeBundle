@@ -108,14 +108,14 @@ class BarcodeService{
      * @param boolean $absolute get absolute path, default: false
      * @param array $options Options
      */
-    public function get($type, $enctext, $absolut = false, $options = array()){
+    public function get($type, $enctext, $absolute = false, $options = array()){
         $text = urldecode($enctext);
         $filename = $this->getAbsoluteBarcodeDir($type).$this->getBarcodeFilename($text, $options);
         // TODO: uncomment this
         //if(!file_exists($filename)){
             $this->saveAs($type, $text, $filename, $options);
         //}
-        if(!$absolut){
+        if(!$absolute){
             $path = DIRECTORY_SEPARATOR.$this->webdir.$this->getTypeDir($type).$this->getBarcodeFilename($text, $options);
             return str_replace(DIRECTORY_SEPARATOR, "/", $path);
         }

@@ -70,9 +70,24 @@ class BarcodeController extends ContainerAware
             )
         );
     }
+    public function downloadBarcodeAction($type, $level = 0, $size = 3, $margin = 4, $useOverlay = false, $enctext)
+    {
+        $bservice = $this->container->get('mopa_barcode.barcode_service');
 
-    public function dowloadBarcodeAction($type, $enctext, $options){
+        $options = array(
+            'level'         => $level,
+            'size'          => $size,
+            'margin'        => $margin,
+            'useOverlay'    => $useOverlay,
+        );
 
-        //TODO: to be implemented
+        return new Response(
+            file_get_contents($file = $bservice->get($type, $enctext, true, $options)),
+            200,
+            array(
+                'Content-Type'          => 'image/png',
+                'Content-Disposition'   => sprintf('attachment; filename="qr_%s"', date("Y_m_d_H_i_s")),
+            )
+        );
     }
 }
