@@ -63,7 +63,6 @@ class BarcodeService{
         $size = ($size < 1) ? 1 : $size;
         $originalLevelWidth = $width / $size;
 
-        //TODO move base path to config
         $overlayImagePath = $this->overlayPath . DIRECTORY_SEPARATOR . $originalLevelWidth . '.png';
 
         if (file_exists($overlayImagePath)) {
@@ -112,14 +111,16 @@ class BarcodeService{
     public function get($type, $enctext, $absolute = false, $options = array()){
         $text = urldecode($enctext);
         $filename = $this->getAbsoluteBarcodeDir($type).$this->getBarcodeFilename($text, $options);
-        // TODO: uncomment this
-        //if(!file_exists($filename)){
+
+        if($options['noCache'] || !file_exists($filename)) {
             $this->saveAs($type, $text, $filename, $options);
-        //}
+        }
+
         if(!$absolute){
             $path = DIRECTORY_SEPARATOR.$this->webdir.$this->getTypeDir($type).$this->getBarcodeFilename($text, $options);
             return str_replace(DIRECTORY_SEPARATOR, "/", $path);
         }
+
         return $filename;
     }
     protected function getTypeDir($type){

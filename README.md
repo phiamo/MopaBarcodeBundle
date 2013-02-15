@@ -118,7 +118,9 @@ http://{yoursymfonyapp}/barcode/send/{type}/{enctext}
 
 Add this to twig template.
 
+``` jinja
     <img src="{{ mopa_barcode_url('qr', "Text to put in QR code", {'size':2, 'level':3, 'margin':0, 'useOverlay': true}) }}"/>
+```
 
 ### Changing overlay images
 
