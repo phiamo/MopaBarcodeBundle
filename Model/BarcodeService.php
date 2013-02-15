@@ -4,6 +4,7 @@ namespace Mopa\Bundle\BarcodeBundle\Model;
 use Monolog\Logger;
 use Imagine\Gd\Image;
 use Imagine\Image\ImagineInterface;
+use Imagine\Image\Box;
 use Zend\Barcode\Barcode;
 
 class BarcodeService{
@@ -36,18 +37,7 @@ class BarcodeService{
                 \QRcode::png($text, $file, $level, $size, $margin);
 
                 if (isset($options['useOverlay']) && $options['useOverlay']) {
-                    list($width) = getimagesize($file);
-                    $overlayImage = $this->kernelrootdir . '/Resources/AstinaRedirectManagerBundle/public/images/QR-j-' . $width . '.png';
-
-                    if (file_exists($overlayImage)) {
-                        $destination = imagecreatefrompng($file);
-                        $src = imagecreatefrompng($overlayImage);
-
-                        $this->imagecopymerge_alpha($destination, $src, 0, 0, 0, 0, $width, $width, 100);
-                        imagepng($destination, $file);
-                        imagedestroy($destination);
-                        imagedestroy($src);
-                    }
+                    $this->addOverlay($file, $size);
                 }
 
             break;
@@ -64,6 +54,34 @@ class BarcodeService{
                 $image->save($file);
         }
         return true;
+    }
+
+    private function addOverlay($file, $size)
+    {
+        list($width) = getimagesize($file);
+        $size = ($size < 1) ? 1 : $size;
+        $originalLevelWidth = $width / $size;
+
+        //TODO move base path to config
+        $overlayImagePath = $this->kernelrootdir . '/Resources/AstinaRedirectManagerBundle/public/images/QR-j-' . $originalLevelWidth . '.png';
+
+        if (file_exists($overlayImagePath)) {
+            $destination = imagecreatefrompng($file);
+            $src = imagecreatefrompng($overlayImagePath);
+
+            $overlayImage = new Image($src);
+            $overlayImage->resize(new Box($width, $width));
+            $tmpFilePath = $this->kernelcachedir . '/' . sha1(time() . rand()) . '.png';
+            $overlayImage->save($tmpFilePath);
+
+            $src = imagecreatefrompng($tmpFilePath);
+
+            $this->imagecopymerge_alpha($destination, $src, 0, 0, 0, 0, $width, $width, 100);
+            imagepng($destination, $file);
+            imagedestroy($destination);
+            imagedestroy($src);
+            unlink($tmpFilePath);
+        }
     }
 
     private function imagecopymerge_alpha($dst_im, $src_im, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h, $pct){
