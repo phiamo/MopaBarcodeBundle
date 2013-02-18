@@ -1,2 +1,14 @@
 vendor/
 /nbproject/
+
+# IDE
+.idea/
+atlassian-ide-plugin.xml
+
+# Eclipse / Zend Studio
+.buildpath
+.project
+.settings/
+
+# Typisch Mac
+.DS_Store

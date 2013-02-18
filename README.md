@@ -75,7 +75,7 @@ If you installed it have a look into
 https://github.com/phiamo/MopaBarcodeBundle/blob/master/Model/BarcodeTypes.php
 The Type given to the service is either the int or the string defined in the types arrays keys and values
 
-To get the service in your controllers etc you can use 
+To get the service in your controllers etc you can use
 
 $bmanager = $this->container->get('mopa_barcode.barcode_service');
 
@@ -86,7 +86,7 @@ $bmanager->get($type, $enctext, $absolute = false);
 to get the url to the file
 where $enctext is urlencoded and $absolute is an boolean to get either the absolute or the relative path (default)
 
-## Twig Helper 
+## Twig Helper
 
 There is also a twig helper registered:
 
@@ -97,7 +97,7 @@ There is also a twig helper registered:
 ## Using the bundle directly
 
 To Make usage e.g. of the Playground in your app, just copy the playground.html.twig to
-app/Resources/MopaBootstrapBundle/views/Barcode/playground.html.twig 
+app/Resources/MopaBootstrapBundle/views/Barcode/playground.html.twig
 and modify as you like
 
 ## Using the Bundle as a urlservice
@@ -114,6 +114,23 @@ And just use Urls to generate your barcodes:
 
 http://{yoursymfonyapp}/barcode/send/{type}/{enctext}
 
+## Using QR code overlays
+
+Add this to twig template.
+
+``` jinja
+    <img src="{{ mopa_barcode_url('qr', "Text to put in QR code", {'size':2, 'level':3, 'margin':0, 'useOverlay': true}) }}"/>
+```
+
+### Changing overlay images
+
+Add and edit this to your parameters.yml file.
+
+    mopa_barcode.overlay_images_path: Resources/qr_overlays
+
+For each QR code level (size) you have to generate overlay image. Look in `Resources/qr_overlays' path of bundle for example overlay images.
+
+
 ## TODO
 
     - Load the different Barcode Libs in a different way. should't be done by ints :(
@@ -122,4 +139,4 @@ http://{yoursymfonyapp}/barcode/send/{type}/{enctext}
 
     - Nothing what could not be done in another way, probably some will arise as soon as its published
       So make issues!
-    - There are probably things missing, so make PR's 
+    - There are probably things missing, so make PR's
