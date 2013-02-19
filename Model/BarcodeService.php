@@ -112,7 +112,10 @@ class BarcodeService{
         $text = urldecode($enctext);
         $filename = $this->getAbsoluteBarcodeDir($type).$this->getBarcodeFilename($text, $options);
 
-        if($options['noCache'] || !file_exists($filename)) {
+        if(
+            (isset($options['noCache']) && $options['noCache'])
+            || !file_exists($filename)
+          ) {
             $this->saveAs($type, $text, $filename, $options);
         }
 
