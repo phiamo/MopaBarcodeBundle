@@ -16,10 +16,9 @@ Is just a shot and shouldnt be considered to be perfect. Feel free to fork and P
     "require": {
         // ...
         "mopa/barcode-bundle": "dev-master",
-        "imagine/Imagine": "dev-master",
-        "avalanche123/imagine-bundle": "dev-master",
+        "avalanche123/imagine-bundle": "dev-master", // handles image installation via requirements
         // if you want to use the zend barcodes
-        "zf2/zf2": "dev-master",
+        "zendframework/zendframework": "2.1.3" // version is the latest known to work, might be newer will too
         // optionally for playground
         "mopa/bootstrap-sandbox-bundle": "dev-master"
         // also read the readme:
@@ -62,7 +61,7 @@ imports:
     - { resource: @MopaBootstrapSandboxBundle/Resources/config/examples/example_navbar.yml }
 ```
 
-And try http://{yoursymfonyapp}/barcode/playground
+And try http://{yoursymfonyapp}/mopa/barcode/playground
 
 ## Usage
 
@@ -91,8 +90,13 @@ where $enctext is urlencoded and $absolute is an boolean to get either the absol
 There is also a twig helper registered:
 
 ``` jinja
-        <p><img alt="[barcode]" src="{{ mopa_barcode_url('code128', '123456789') }}"></p>
+        <p><img alt="[barcode]" src="{{ mopa_barcode_url('code128', '123456789', {'barcodeOptions': {}, 'rendererOptions': {}}) }}"></p>
 ```
+
+Of course the dict (3rd parameter is optional) have a look into http://framework.zend.com/manual/2.1/en/modules/zend.barcode.creation.html
+to see what options can be set.
+
+the dict also takes a noCache boolean, i wont explain it further
 
 ## Using the bundle directly
 
@@ -112,7 +116,7 @@ my_barcode_display:
 ```
 And just use Urls to generate your barcodes:
 
-http://{yoursymfonyapp}/barcode/send/{type}/{enctext}
+http://{yoursymfonyapp}/mopa/barcode/send/{type}/{enctext}
 
 ## Using QR code overlays
 
