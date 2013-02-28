@@ -45,11 +45,12 @@ class BarcodeService{
             case is_numeric($type):
                 $type = $this->types[$type];
             default:
-                $barcodeOptions = array('text' => $text);
-                $rendererOptions = array();
+                $barcodeOptions = array_merge(isset($options['barcodeOptions']) ? $options['barcodeOptions'] : array(), array('text' => $text));
+                $rendererOptions = isset($options['rendererOptions']) ? $options['rendererOptions'] : array();
+                $rendererOptions = array('width' => 2233, 'height'=>649);
                 $image = new Image(
                     $imageResource = Barcode::factory(
-                        $type, 'image', $barcodeOptions, $rendererOptions, false
+                        $type, 'image', $barcodeOptions, $rendererOptions
                     )->draw()
                 );
                 $image->save($file);
