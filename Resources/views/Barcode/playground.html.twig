@@ -30,6 +30,12 @@
         <p>Beachten Sie das bestimmte Code Typen nur Zahlen annehmen oder bestimmte Längen haben müssen.</p>
         <p>Bsp: Code128 <br>Text:123456789</p>
         <p><img alt="[barcode]" src="{{ mopa_barcode_url('code128', '123456789') }}"></p>
+        <p>Bsp: Code128 with extended bar height:
+        <br>Text:987654321</p>
+        <p><img alt="[barcode]" src="{{ mopa_barcode_url('code128', '987654321', {barcodeOptions:{barHeight: 74}}) }}"></p>
+        <p>Bsp: Code128 with reduced bar height:
+        <br>Text:543219876</p>
+        <p><img alt="[barcode]" src="{{ mopa_barcode_url('code128', '543219876', {barcodeOptions:{barHeight: 24}}) }}"></p>
     </div>
 {% endblock %}
 
