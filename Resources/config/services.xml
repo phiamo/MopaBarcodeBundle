@@ -12,7 +12,7 @@
     </parameters>
     <services>
         <service id="mopa_barcode.barcode_service" class="%mopa_barcode.barcode_service.class%">
-            <argument type="service" id="liip_imagine" />
+            <argument type="service" id="imagine" />
             <argument>%kernel.cache_dir%</argument>
             <argument>%kernel.root_dir%</argument>
             <argument>cache/barcodes/</argument>
