@@ -1,3 +1,3 @@
 mopa_barcode_playground:
-    pattern:   /barcode/playground
+    pattern:   /mopa/barcode
     defaults:  { _controller: MopaBarcodeBundle:Barcode:playground }
