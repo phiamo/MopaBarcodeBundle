@@ -25,7 +25,6 @@
     },
     "suggest":  {
         "zendframework/zendframework": "dev-master",
-        "imagine/Imagine": "dev-master",
         "avalanche123/imagine-bundle": "dev-master",
         "mopa/bootstrap-sandbox-bundle": "dev-master"
     }
