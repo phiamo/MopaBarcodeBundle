@@ -47,7 +47,8 @@ class BarcodeService{
             default:
                 $barcodeOptions = array_merge(isset($options['barcodeOptions']) ? $options['barcodeOptions'] : array(), array('text' => $text));
                 $rendererOptions = isset($options['rendererOptions']) ? $options['rendererOptions'] : array();
-                $rendererOptions = array('width' => 2233, 'height'=>649);
+                $rendererOptions['width'] = isset($rendererOptions['width']) ? $rendererOptions['width'] : 2233;
+                $rendererOptions['height'] = isset($rendererOptions['height']) ? $rendererOptions['height'] : 649;
                 $image = new Image(
                     $imageResource = Barcode::factory(
                         $type, 'image', $barcodeOptions, $rendererOptions
