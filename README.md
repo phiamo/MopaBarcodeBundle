@@ -18,7 +18,8 @@ Is just a shot and shouldnt be considered to be perfect. Feel free to fork and P
         "mopa/barcode-bundle": "dev-master",
         "avalanche123/imagine-bundle": "dev-master", // handles image installation via requirements
         // if you want to use the zend barcodes
-        "zendframework/zendframework": "2.1.3" // version is the latest known to work, might be newer will too
+        "zendframework/zend-barcode": "~2.3.7",
+        "zendframework/zend-servicemanager": "~2.3.7",
         // optionally for playground
         "mopa/bootstrap-sandbox-bundle": "dev-master"
         // also read the readme:
