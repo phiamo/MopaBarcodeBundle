@@ -24,8 +24,9 @@
         "php": ">=5.3.2"
     },
     "suggest":  {
-        "zendframework/zendframework": "dev-master",
         "avalanche123/imagine-bundle": "dev-master",
-        "mopa/bootstrap-sandbox-bundle": "dev-master"
+        "zendframework/zend-barcode": "~2.3.7",
+        "zendframework/zend-validator": "~2.3.7",
+        "zendframework/zend-servicemanager": "~2.3.7"
     }
 }

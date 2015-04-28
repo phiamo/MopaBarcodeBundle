@@ -27,7 +27,7 @@ class BarcodeController extends ContainerAware
         ;
         $webfile = false;
         if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
+            $form->submit($request);
             $data = $form->getData();
             $text = $data['text'];
             $type = $data['type'];
