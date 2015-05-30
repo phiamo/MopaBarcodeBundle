@@ -25,6 +25,9 @@
         "symfony/framework-bundle": "~2.3",
         "symfony/twig-bundle": "~2.3|~3.0"
     },
+    "require-dev": {
+      "phpunit/phpunit": "~4.6"
+    },
     "suggest":  {
         "avalanche123/imagine-bundle": "dev-master",
         "zendframework/zend-barcode": "~2.3.7",
