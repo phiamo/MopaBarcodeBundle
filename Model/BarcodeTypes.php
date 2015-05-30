@@ -1,6 +1,10 @@
 <?php
 namespace Mopa\Bundle\BarcodeBundle\Model;
 
+/**
+ * Class BarcodeTypes
+ * @package Mopa\Bundle\BarcodeBundle\Model
+ */
 class BarcodeTypes{
     /**
      * Barcode Types
@@ -27,6 +31,10 @@ class BarcodeTypes{
         17 => "upce",
         'qr' => "qr",
     );
+
+    /**
+     * @return array
+     */
     public static function getTypes(){
         return self::$types;
     }

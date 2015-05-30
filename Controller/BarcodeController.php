@@ -1,5 +1,4 @@
 <?php
-
 namespace Mopa\Bundle\BarcodeBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
@@ -12,6 +11,8 @@ class BarcodeController extends ContainerAware
 {
     /**
      * This is just an example howto use barcodes and to display them
+     * @param Request $request
+     * @return Response
      */
     public function playgroundAction(Request $request)
     {
@@ -55,9 +56,13 @@ class BarcodeController extends ContainerAware
             )
         );
     }
+
     /**
      * This might be used to render barcodes dynamically
-     * Careful to expose this on the web, maybe others could use your site just to generate and display barcodes 
+     * Careful to expose this on the web, maybe others could use your site just to generate and display barcodes
+     * @param $type
+     * @param $enctext
+     * @return Response
      */
     public function displayBarcodeAction($type, $enctext){
         $bservice = $this->container->get('mopa_barcode.barcode_service');
@@ -70,6 +75,16 @@ class BarcodeController extends ContainerAware
             )
         );
     }
+
+    /**
+     * @param $type
+     * @param int $level
+     * @param int $size
+     * @param int $margin
+     * @param bool $useOverlay
+     * @param $enctext
+     * @return Response
+     */
     public function downloadBarcodeAction($type, $level = 0, $size = 3, $margin = 4, $useOverlay = false, $enctext)
     {
         $bservice = $this->container->get('mopa_barcode.barcode_service');

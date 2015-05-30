@@ -12,13 +12,18 @@ namespace Mopa\Bundle\BarcodeBundle\Twig\Extension;
 
 use Mopa\Bundle\BarcodeBundle\Model\BarcodeService;
 
+/**
+ * Class BarcodeRenderExtension
+ * @package Mopa\Bundle\BarcodeBundle\Twig\Extension
+ */
 class BarcodeRenderExtension extends \Twig_Extension
 {
 
     protected $bs;
 
     /**
-     * @param \Knp\Menu\Twig\Helper $helper
+     * @param BarcodeService $bs
+     * @internal param \Knp\Menu\Twig\Helper $helper
      */
     public function __construct(BarcodeService $bs)
     {
@@ -33,6 +38,9 @@ class BarcodeRenderExtension extends \Twig_Extension
         return 'mopa_barcode_render';
     }
 
+    /**
+     * @return array
+     */
     public function getFunctions()
     {
         return array(
@@ -41,16 +49,35 @@ class BarcodeRenderExtension extends \Twig_Extension
         );
     }
 
+    /**
+     * @param $type
+     * @param $text
+     * @param array $options
+     * @return mixed|string
+     */
     public function url($type, $text, $options = array())
     {
         return $this->get($type, $text, false, $options);
     }
 
+    /**
+     * @param $type
+     * @param $text
+     * @param array $options
+     * @return mixed|string
+     */
     public function path($type, $text, $options = array())
     {
         return $this->get($type, $text, true, $options);
     }
 
+    /**
+     * @param $type
+     * @param $text
+     * @param $absolute
+     * @param array $options
+     * @return mixed|string
+     */
     protected function get($type, $text, $absolute, $options = array())
     {
         return $this->bs->get($type, urlencode($text), $absolute, $options);
